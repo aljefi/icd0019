@@ -7,11 +7,12 @@ public class Program {
     public static void main(String[] args) {
         int decimal = asDecimal("11001101");
         System.out.println(decimal); // 205
-        System.out.println(asString(11001101));
+        System.out.println(asString(205));
         System.out.println(pow(3, 2));
     }
 
     public static String asString(int input) {
+        input = Integer.parseInt(Integer.toBinaryString(input));
         return String.valueOf(input);
     }
 
