@@ -119,45 +119,45 @@ public class Code {
                         isolatedCount++;
                     }
                 } else if (i == 0 && j > 0 && j < 9) {
-                    if (!matrix[i][j - 1] && !matrix[i][j + 1] && !matrix[i + 1][j - 1] &&
-                            !matrix[i + 1][j] && !matrix[i + 1][j + 1]) {
+                    if (!matrix[i][j - 1] && !matrix[i][j + 1] && !matrix[i + 1][j - 1] && !matrix[i + 1][j] && !matrix[i + 1][j + 1]) {
                         isolatedCount++;
                     }
-
                 } else if (i == 9 && j > 0 && j < 9) {
-                    if (!matrix[i - 1][j - 1] && !matrix[i - 1][j] && !matrix[i - 1][j + 1]
-                            && !matrix[i][j - 1] && !matrix[i][j + 1]) {
+                    if (!matrix[i - 1][j - 1] && !matrix[i - 1][j] && !matrix[i - 1][j + 1] && !matrix[i][j - 1] && !matrix[i][j + 1]) {
                         isolatedCount++;
                     }
                 } else if (i > 0 && i < 9 && j == 0) {
-                    if (!matrix[i - 1][j] && !matrix[i - 1][j + 1] && !matrix[i][j + 1] &&
-                            !matrix[i + 1][j] && !matrix[i + 1][j + 1]) {
+                    if (!matrix[i - 1][j] && !matrix[i - 1][j + 1] && !matrix[i][j + 1] && !matrix[i + 1][j] && !matrix[i + 1][j + 1]) {
                         isolatedCount++;
                     }
                 } else if (i > 0 && i < 9) {
-                    if (!matrix[i - 1][j - 1] && !matrix[i - 1][j] && !matrix[i][j - 1]
-                            && !matrix[i + 1][j - 1] && !matrix[i + 1][j]) {
+                    if (!matrix[i - 1][j - 1] && !matrix[i - 1][j] && !matrix[i][j - 1] && !matrix[i + 1][j - 1] && !matrix[i + 1][j]) {
                         isolatedCount++;
                     }
                 } else if (i == 0 && j == 0) {
-                    if (!matrix[i][j + 1] && !matrix[i + 1][j] && !matrix[i + 1][j + 1]) {
-                        isolatedCount++;
-                    }
+                    isolatedCount += isolatedCorner(i, j, matrix, isolatedCount);
                 } else if (i == 9 && j == 0) {
-                    if (!matrix[i - 1][j] && !matrix[i - 1][j + 1] && !matrix[i][j + 1]) {
-                        isolatedCount++;
-                    }
+                    isolatedCount += isolatedCorner(i, j, matrix, isolatedCount);
                 } else if (i == 0) {
-                    if (!matrix[i][j - 1] && !matrix[i + 1][j - 1] && !matrix[i + 1][j]) {
-                        isolatedCount++;
-                    }
+                    isolatedCount += isolatedCorner(i, j, matrix, isolatedCount);
                 } else {
-                    if (!matrix[i - 1][j - 1] && !matrix[i - 1][j] && !matrix[i][j - 1]
-                    ) {
-                        isolatedCount++;
-                    }
+                    isolatedCount += isolatedCorner(i, j, matrix, isolatedCount);
                 }
             }
+        }
+
+        return isolatedCount;
+    }
+
+    public static int isolatedCorner(int i, int j, boolean[][] matrix, int isolatedCount) {
+        if (!matrix[i - 1][j - 1] && !matrix[i - 1][j] && !matrix[i][j - 1]) {
+            isolatedCount++;
+        } else if (!matrix[i][j - 1] && !matrix[i + 1][j - 1] && !matrix[i + 1][j]) {
+            isolatedCount++;
+        } else if (!matrix[i - 1][j] && !matrix[i - 1][j + 1] && !matrix[i][j + 1]) {
+            isolatedCount++;
+        } else if (!matrix[i][j + 1] && !matrix[i + 1][j] && !matrix[i + 1][j + 1]) {
+            isolatedCount++;
         }
         return isolatedCount;
     }
