@@ -6,9 +6,7 @@ import java.util.Random;
 public class Code {
 
     public static void main(String[] args) {
-
         int[] numbers = {1, 3, -2, 9};
-
         System.out.println(sum(numbers)); // 11
         System.out.println(average(new int[]{1, 2})); // 1.5
         System.out.println(minimumElement(new int[]{1, 2})); // tagastab 1
