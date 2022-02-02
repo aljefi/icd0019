@@ -104,45 +104,53 @@ public class Code {
 
     public static int isolatedSquareCount() {
         boolean[][] matrix = getSampleMatrix();
-
         printMatrix(matrix);
-
         int isolatedCount = 0;
-
         // count isolates squares here
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
+
                 if (i > 0 && i < 9 && j > 0 && j < 9) {
                     if (!matrix[i - 1][j - 1] && !matrix[i - 1][j] && !matrix[i - 1][j + 1]
                             && !matrix[i][j - 1] && !matrix[i][j + 1]
                             && !matrix[i + 1][j - 1] && !matrix[i + 1][j] && !matrix[i + 1][j + 1]) {
                         isolatedCount++;
                     }
-                } else if (i == 0 && j > 0 && j < 9) {
-                    if (!matrix[i][j - 1] && !matrix[i][j + 1] && !matrix[i + 1][j - 1] && !matrix[i + 1][j] && !matrix[i + 1][j + 1]) {
-                        isolatedCount++;
-                    }
-                } else if (i == 9 && j > 0 && j < 9) {
-                    if (!matrix[i - 1][j - 1] && !matrix[i - 1][j] && !matrix[i - 1][j + 1] && !matrix[i][j - 1] && !matrix[i][j + 1]) {
-                        isolatedCount++;
-                    }
-                } else if (i > 0 && i < 9 && j == 0) {
-                    if (!matrix[i - 1][j] && !matrix[i - 1][j + 1] && !matrix[i][j + 1] && !matrix[i + 1][j] && !matrix[i + 1][j + 1]) {
-                        isolatedCount++;
-                    }
-                } else if (i > 0 && i < 9) {
-                    if (!matrix[i - 1][j - 1] && !matrix[i - 1][j] && !matrix[i][j - 1] && !matrix[i + 1][j - 1] && !matrix[i + 1][j]) {
-                        isolatedCount++;
-                    }
+
                 } else if (i == 0 && j == 0) {
                     isolatedCount = isolatedCorner(i, j, matrix, isolatedCount);
                 } else if (i == 9 && j == 0) {
                     isolatedCount = isolatedCorner(i, j, matrix, isolatedCount);
-                } else if (i == 0) {
+                } else if (i == 0 && j == 9) {
                     isolatedCount = isolatedCorner(i, j, matrix, isolatedCount);
+                } else if (i == 9 && j == 9) {
+                    isolatedCount = isolatedCorner(i, j, matrix, isolatedCount);
+
                 } else {
-                    isolatedCount = isolatedCorner(i, j, matrix, isolatedCount);
+                    isolatedCount = isolatedLines(i, j, matrix, isolatedCount);
                 }
+            }
+        }
+        return isolatedCount;
+    }
+
+    public static int isolatedLines(int i, int j, boolean[][] matrix, int isolatedCount) {
+        if (i == 0 && j > 0 && j < 9) {
+            if (!matrix[i][j - 1] && !matrix[i][j + 1] && !matrix[i + 1][j - 1] && !matrix[i + 1][j] && !matrix[i + 1][j + 1]) {
+                isolatedCount++;
+            }
+        } else if (i == 9 && j > 0 && j < 9) {
+            if (!matrix[i - 1][j - 1] && !matrix[i - 1][j] && !matrix[i - 1][j + 1] && !matrix[i][j - 1] && !matrix[i][j + 1]) {
+                isolatedCount++;
+            }
+        } else if (i > 0 && i < 9 && j == 0) {
+            if (!matrix[i - 1][j] && !matrix[i - 1][j + 1] && !matrix[i][j + 1] && !matrix[i + 1][j] && !matrix[i + 1][j + 1]) {
+                isolatedCount++;
+            }
+        } else if (i > 0 && i < 9) {
+            if (!matrix[i - 1][j - 1] && !matrix[i - 1][j] && !matrix[i][j - 1]
+                    && !matrix[i + 1][j - 1] && !matrix[i + 1][j]) {
+                isolatedCount++;
             }
         }
         return isolatedCount;
@@ -159,7 +167,8 @@ public class Code {
             } else if (!matrix[i][j + 1] && !matrix[i + 1][j] && !matrix[i + 1][j + 1]) {
                 isolatedCount++;
             }
-        } catch (ArrayIndexOutOfBoundsException ignored) {
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("!");
         }
         return isolatedCount;
     }
