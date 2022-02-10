@@ -28,7 +28,9 @@ public class Code {
         streaks.add(count);
         if (streaks.get(0) != 0) {
             return Collections.max(streaks);
-        } else return inputString.length();
+        } else {
+            return inputString.length();
+        }
     }
 
     public static Character mode(String inputString) {
