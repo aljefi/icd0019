@@ -24,9 +24,6 @@ public class Point {
         if (obj == null) {
             return false;
         }
-        if (this.toString().equals(obj.toString())) {
-            return true;
-        }
-        return false;
+        return this.toString().equals(obj.toString());
     }
 }
