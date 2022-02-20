@@ -1,5 +1,6 @@
 package oo.hide;
 
+
 public class PointSet {
     Point[] points;
     int pointCount = 0;
@@ -30,6 +31,19 @@ public class PointSet {
                 pointCount++;
             }
         }
+//         sort
+//        for (int i = 0; i < points.length; i++) {
+//            for (int j = 0; j < points.length; j++) {
+//                Point temp;
+//                System.out.println(Integer.parseInt(String.valueOf(points[j])));
+//                System.out.println(points[i]);
+//                if (Integer.parseInt(String.valueOf(points[j]))<Integer.parseInt(String.valueOf(points[i]))){
+//                    temp=points[i];
+//                    points[i] = points[j];
+//                    points[j] = temp;
+//                }
+//            }
+//        }
     }
 
     public int size() {
@@ -38,10 +52,11 @@ public class PointSet {
 
     public boolean contains(Point point) {
         for (Point p : points) {
-            if (p == null) {
+            if (p == null && point == null) {
+                return true;
+            } else if (p == null || point == null) {
                 return false;
-            }
-            if (p.toString().equals(point.toString())) {
+            } else if (p.toString().equals(point.toString())) {
                 return true;
             }
         }
@@ -68,10 +83,14 @@ public class PointSet {
         return ret;
     }
 
-    public Boolean equals(PointSet other) {
-        for (Point point : this.points) {
-            if (!other.contains(point)) {
-                return false;
+    @Override
+    public boolean equals(Object obj) {
+        PointSet other = (PointSet) obj;
+        if (this.points != null && other.points != null) {
+            for (Point point : this.points) {
+                if (!other.contains(point)) {
+                    return false;
+                }
             }
         }
         return true;
