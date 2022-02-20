@@ -38,7 +38,7 @@ public class PointSetTests {
 
     @Test
     public void pointSetSupportsEqualityTesting() {
-//        assertThat(getSet(), is(getSet()));
+        assertThat(getSet(), is(getSet()));
 
         assertThat(getSet(new Point(1, 1)), is(not(getSet())));
 
@@ -92,7 +92,7 @@ public class PointSetTests {
         for (Point point : points) {
             set.add(point);
         }
-        System.out.println("set: " + set);
+
         return set;
     }
 

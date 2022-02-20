@@ -1,6 +1,8 @@
 package oo.hide;
 
 
+import java.util.Arrays;
+
 public class PointSet {
     Point[] points;
     int pointCount = 0;
@@ -10,7 +12,7 @@ public class PointSet {
     }
 
     public PointSet() {
-        this(2);
+        this(1);
     }
 
     public void add(Point point) {
@@ -31,19 +33,6 @@ public class PointSet {
                 pointCount++;
             }
         }
-//         sort
-//        for (int i = 0; i < points.length; i++) {
-//            for (int j = 0; j < points.length; j++) {
-//                Point temp;
-//                System.out.println(Integer.parseInt(String.valueOf(points[j])));
-//                System.out.println(points[i]);
-//                if (Integer.parseInt(String.valueOf(points[j]))<Integer.parseInt(String.valueOf(points[i]))){
-//                    temp=points[i];
-//                    points[i] = points[j];
-//                    points[j] = temp;
-//                }
-//            }
-//        }
     }
 
     public int size() {
@@ -86,6 +75,8 @@ public class PointSet {
     @Override
     public boolean equals(Object obj) {
         PointSet other = (PointSet) obj;
+        System.out.println(Arrays.toString(this.points));
+        System.out.println(Arrays.toString(other.points));
         if (this.points != null && other.points != null) {
             for (Point point : this.points) {
                 if (!other.contains(point)) {
