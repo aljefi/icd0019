@@ -55,6 +55,7 @@ public final class FlatTaxSalesAnalyser extends FatherClass {
         }
     }
 
+    @Override
     protected String getIdOfMostPopularItem() {
         return mostPopular;
     }

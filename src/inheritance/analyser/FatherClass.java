@@ -43,4 +43,5 @@ sealed abstract class FatherClass permits DifferentiatedTaxSalesAnalyser, FlatTa
         return totalById;
     }
 
+    abstract protected String getIdOfMostPopularItem();
 }

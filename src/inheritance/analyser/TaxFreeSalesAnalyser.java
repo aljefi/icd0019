@@ -55,4 +55,9 @@ public final class TaxFreeSalesAnalyser extends FatherClass {
         }
     }
 
+    @Override
+    protected String getIdOfMostPopularItem() {
+        return mostPopular;
+    }
+
 }

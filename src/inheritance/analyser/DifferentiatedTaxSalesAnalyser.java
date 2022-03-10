@@ -60,4 +60,9 @@ public final class DifferentiatedTaxSalesAnalyser extends FatherClass {
             }
         }
     }
+
+    @Override
+    protected String getIdOfMostPopularItem() {
+        return mostPopular;
+    }
 }
