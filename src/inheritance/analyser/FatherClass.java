@@ -1,6 +1,6 @@
 package inheritance.analyser;
 
-abstract class FatherClass {
+sealed abstract class FatherClass permits DifferentiatedTaxSalesAnalyser, FlatTaxSalesAnalyser, TaxFreeSalesAnalyser {
 
     Double total = 0.0;
     Double totalById = 0.0;
@@ -11,7 +11,11 @@ abstract class FatherClass {
     String mostPopular, largestTotalSale;
 
 
-    protected Double getTotalSalesByProductId(String id) {
+    protected Double getTotalSales() {
+        return total;
+    }
+
+    Double getTotalSalesByProductId(String id) {
         switch (id) {
             case "i1":
                 totalById = i1;
@@ -37,10 +41,6 @@ abstract class FatherClass {
 
         }
         return totalById;
-    }
-
-    protected Double getTotalSales() {
-        return total;
     }
 
 }

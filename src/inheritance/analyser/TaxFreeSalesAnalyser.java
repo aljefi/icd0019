@@ -2,7 +2,7 @@ package inheritance.analyser;
 
 import java.util.List;
 
-public class TaxFreeSalesAnalyser extends FatherClass {
+public final class TaxFreeSalesAnalyser extends FatherClass {
 
     protected TaxFreeSalesAnalyser(List<SalesRecord> records) {
         for (SalesRecord elem : records) {

@@ -2,15 +2,15 @@ package inheritance.analyser;
 
 import java.util.List;
 
-public class DifferentiatedTaxSalesAnalyser extends FatherClass {
+public final class DifferentiatedTaxSalesAnalyser extends FatherClass {
 
-    protected DifferentiatedTaxSalesAnalyser(List<SalesRecord> records) {
+
+    DifferentiatedTaxSalesAnalyser(List<SalesRecord> records) {
         for (SalesRecord elem : records) {
             double sell = elem.getProductPrice() * elem.getItemsSold();
             if (elem.hasReducedRate()) {
                 sell = sell * 10 / 11;
-            }
-            else {
+            } else {
                 sell = sell * 10 / 12;
             }
             total += sell;
@@ -47,20 +47,17 @@ public class DifferentiatedTaxSalesAnalyser extends FatherClass {
             Integer[] idsCount = {i1Count, i2Count, i4Count, i5Count};
             Double[] idsTotal = {i1, i2, i3, i4, i5, i6, i7};
             for (Integer i : idsCount) {
-                if (inCount < i){
+                if (inCount < i) {
                     inCount = i;
                     mostPopular = elem.getProductId();
                 }
             }
             for (Double i : idsTotal) {
-                if (inTotal < i){
+                if (inTotal < i) {
                     inTotal = i;
                     largestTotalSale = elem.getProductId();
                 }
             }
         }
     }
-
-
-
 }

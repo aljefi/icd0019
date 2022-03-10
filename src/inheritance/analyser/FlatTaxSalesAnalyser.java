@@ -2,7 +2,7 @@ package inheritance.analyser;
 
 import java.util.List;
 
-public class FlatTaxSalesAnalyser extends FatherClass {
+public final class FlatTaxSalesAnalyser extends FatherClass {
 
     protected FlatTaxSalesAnalyser(List<SalesRecord> records) {
         for (SalesRecord elem : records){
@@ -62,4 +62,5 @@ public class FlatTaxSalesAnalyser extends FatherClass {
     protected String getIdOfItemWithLargestTotalSales() {
         return largestTotalSale;
     }
+
 }
