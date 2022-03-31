@@ -52,8 +52,7 @@ public class Repository {
                         list.add(entry);
                     }
             );
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
         }
 
 //        System.out.println(list.get(1).getDate());
