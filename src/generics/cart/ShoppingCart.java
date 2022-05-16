@@ -59,7 +59,7 @@ public class ShoppingCart<T extends CartItem> {
         HashMap<String, Integer> map = new HashMap<>();
 
         for (T item : cart) {
-            map.compute(item.getId(), (k, v) -> (v == null) ? 1 : (v + 1));
+            map.compute(item.getId(), (k, v) -> (v == null) ? 1 : v + 1);
         }
 
         StringBuilder sb = new StringBuilder();
