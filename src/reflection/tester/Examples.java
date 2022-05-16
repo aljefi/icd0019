@@ -8,10 +8,10 @@ public class Examples {
 
         Class<?> aClass = Class.forName("reflection.tester.ExampleTests1");
 
-        System.out.println(Arrays.toString(aClass.getMethods()));
+        System.out.println(Arrays.toString(aClass.getDeclaredMethods()));
 
         Class<? extends Throwable> expected = RuntimeException.class;
-        // expected = IllegalArgumentException.class;
+//        expected = IllegalArgumentException.class;
 
         if (expected.isAssignableFrom(IllegalStateException.class)) {
             System.out.println("ok");
