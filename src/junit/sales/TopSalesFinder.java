@@ -1,7 +1,5 @@
 package junit.sales;
 
-import java.util.Objects;
-
 public class TopSalesFinder {
 
     String[] item = new String[1];
@@ -51,7 +49,7 @@ public class TopSalesFinder {
     private void extracted(String[] tempItem, Integer[] tempPrice, int i) {
         int c = 0;
         for (String s : tempItem) {
-            if (Objects.equals(s, item[i])) {
+            if (s != null && s.equals(item[i])) {
                 break;
             } else {
                 c++;
@@ -63,7 +61,7 @@ public class TopSalesFinder {
 
     public static boolean notContains(String[] temp, String num) {
         for (String i : temp) {
-            if (Objects.equals(i, num)) {
+            if (i != null && i.equals(num)) {
                 return false;
             }
         }
