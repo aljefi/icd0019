@@ -1,9 +1,11 @@
 package oo.hide;
 
+import java.util.Objects;
+
 public class Point {
 
-    private int x;
-    private int y;
+    public int x;
+    public int y;
 
     public Point(int x, int y) {
         this.x = x;
@@ -25,5 +27,10 @@ public class Point {
             return false;
         }
         return this.toString().equals(obj.toString());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

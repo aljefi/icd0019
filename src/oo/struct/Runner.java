@@ -1,6 +1,5 @@
 package oo.struct;
 
-import oo.hide.Point;
 import org.junit.Test;
 
 public class Runner {

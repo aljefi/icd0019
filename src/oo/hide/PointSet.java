@@ -1,10 +1,8 @@
 package oo.hide;
 
 
-import java.util.Arrays;
-
 public class PointSet {
-    Point[] points;
+    private Point[] points;
     int pointCount = 0;
 
     public PointSet(int capacity) {
@@ -75,8 +73,6 @@ public class PointSet {
     @Override
     public boolean equals(Object obj) {
         PointSet other = (PointSet) obj;
-        System.out.println(Arrays.toString(this.points));
-        System.out.println(Arrays.toString(other.points));
         if (this.points != null && other.points != null) {
             for (Point point : this.points) {
                 if (!other.contains(point)) {
@@ -87,6 +83,7 @@ public class PointSet {
         return true;
     }
 
+    @Override
     public String toString() {
         StringBuilder ret = new StringBuilder();
         for (int i = 0; i < points.length; i++) {

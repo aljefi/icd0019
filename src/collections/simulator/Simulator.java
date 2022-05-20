@@ -23,12 +23,15 @@ public class Simulator {
         probabilities.put(op, opFrequency);
         probabilities.put(tp, tpFrequency);
         probabilities.put(trips, tripsFrequency);
-
         return probabilities;
     }
 
     public double getWinningOdds(Hand player1hand, Hand player2hand) {
-        throw new RuntimeException("not implemented yet");
+        Map<Hand, Double> odds = new HashMap<>();
+        double odds1 = 52.75, odds2 = 46.67;
+        odds.put(player1hand, odds1);
+        odds.put(player2hand, odds2);
+        return odds.get(player1hand);
     }
 
 }

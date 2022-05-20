@@ -44,7 +44,6 @@ public class TestRunner {
     }
 
     public String getResult() {
-        System.out.println(ret);
         return ret.toString();
     }
 }

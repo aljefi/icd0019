@@ -1,5 +1,6 @@
 package inheritance.pager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilteringPager {
@@ -8,6 +9,7 @@ public class FilteringPager {
     private final SimplePager dataSource;
     @SuppressWarnings("PMD.UnusedPrivateField")
     private final int pageSize;
+    private int page = -1;
 
     public FilteringPager(SimplePager dataSource, int pageSize) {
         this.dataSource = dataSource;
@@ -15,15 +17,55 @@ public class FilteringPager {
     }
 
     public List<Integer> getNextPage() {
-        throw new RuntimeException("not implemented yet");
+        List<Integer> nextPage = new ArrayList<>();
+        page += 1;
+        try {
+            getPage(nextPage);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalStateException("There is no next page");
+        }
+
+        return nextPage;
     }
 
     public List<Integer> getCurrentPage() {
-        throw new RuntimeException("not implemented yet");
+        List<Integer> currentPage = new ArrayList<>();
+        try {
+            getPage(currentPage);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalStateException("There is no current page");
+        }
+        return currentPage;
     }
 
     public List<Integer> getPreviousPage() {
-        throw new RuntimeException("not implemented yet");
+        List<Integer> previousPage = new ArrayList<>();
+        page -= 1;
+        try {
+            getPage(previousPage);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalStateException("There is no previous page");
+        }
+        return previousPage;
     }
 
+    private void getPage(List<Integer> previousPage) {
+        for (Integer data : dataSource.getPage(page)) {
+            if (data != null) {
+                previousPage.add(data);
+            }
+        }
+    }
+
+//    private void goToNextPage() {
+//        rightBound = 0;
+//        endPageNumber++;
+//    }
+//
+//    private void goToPreviousPage() {
+//        startPageNumber--;
+//        if (dataSource.hasPage(startPageNumber)) {
+//            leftBound = dataSource.getPage(startPageNumber).size() - 1;
+//        }
+//    }
 }
