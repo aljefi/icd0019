@@ -67,7 +67,6 @@ public class FilteringPagerWithMemory {
     private List<Integer> getPageCommon() {
         int startPos = pageNumber * pageSize;
         int endPos = Math.min(startPos + pageSize, storage.size());
-
         return storage.subList(startPos, endPos);
     }
 }
